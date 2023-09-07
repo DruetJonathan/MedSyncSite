@@ -1,0 +1,4 @@
+export enum Role {
+  ADMINISTRATIF="ADMINISTRATIF",
+  MEDECIN="MEDECIN"
+}

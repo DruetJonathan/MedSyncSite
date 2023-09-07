@@ -1,0 +1,30 @@
+header{
+  background: #718093;
+  font-family: Candara;
+  nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    #leftContainer{
+      display: flex;
+      width: 200px;
+      justify-content: center;
+      align-items: center;
+      img{
+        width: 35%;
+      }
+      p{
+        font-size: 1.5rem;
+        color: white;
+      }
+    }
+    #rightContainer{
+      margin-right: 1.5rem;
+      color: white;
+      p{
+        cursor: pointer;
+      }
+    }
+  }
+}

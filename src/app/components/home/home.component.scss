@@ -1,0 +1,47 @@
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/assets/images/wp.jpg");
+  background-position: center;
+  filter: blur(10px); /* Appliquez le flou ici */
+  z-index: -1; /* Assurez-vous que le pseudo-élément est en arrière-plan */
+}
+section{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  height: 95vh;
+  overflow-y: hidden;
+  //background-image: url("/assets/images/wp.jpg");
+  //background-position: center;
+  //backdrop-filter: blur(2px);
+  //position: relative; /* Ajoutez la position relative */
+  form{
+    background: #718093;
+    padding: 2rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    input{
+      margin: 1rem;
+      width: 100%;
+    }
+    button{
+      background: #fff;
+      width: 100%;
+      border: none;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-family: Candara, serif;
+      font-size: 1rem;
+
+    }
+  }
+}
