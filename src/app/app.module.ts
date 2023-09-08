@@ -7,17 +7,21 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {SharedModule} from "./shared/shared.module";
 import { PanelComponent } from './components/panel/panel.component';
 import {TabMenuModule} from "primeng/tabmenu";
+import { DemandeComponent } from './components/demande/demande.component';
+import {TabViewModule} from "primeng/tabview";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    PanelComponent
+    PanelComponent,
+    DemandeComponent
   ],
   imports: [
     SharedModule,
-    TabMenuModule
+    TabMenuModule,
+    TabViewModule
 
   ],
   providers: [],

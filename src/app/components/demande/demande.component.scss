@@ -1,0 +1,21 @@
+/* Ajoutez ces styles dans votre feuille de style CSS */
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/assets/images/wp.jpg");
+  background-position: center;
+  filter: blur(10px); /* Appliquez le flou ici */
+  z-index: -1; /* Assurez-vous que le pseudo-élément est en arrière-plan */
+}
+section {
+  //display: flex;
+  //align-content: center;
+  //align-items: center;
+  //justify-content: center;
+  height: 95vh;
+  overflow-y: hidden;
+}
