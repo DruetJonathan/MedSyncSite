@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {MenuItem} from "primeng/api";
-import {UserFull} from "../../Models/User";
+import {UserDTO, UserFull} from "../../Models/User";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
@@ -17,7 +17,9 @@ export class PanelComponent {
 
   activeItem: MenuItem | undefined;
   connectedUser: UserFull | undefined;
-  constructor(private _authServ:AuthService) {
+  userProfile : UserDTO | undefined;
+
+  constructor(private _authServ:AuthService, private _userService: UserService) {
   }
   ngOnInit() {
     this._authServ._authSubject$.subscribe( (auth) => {
@@ -34,5 +36,19 @@ export class PanelComponent {
       this.items = administratifItems;
     }
     this.activeItem = this.items[0];
+
+    id: this.connectedUser?.id;
+
+    this.getProfile();
+
+  }
+
+  getProfile() {
+    console.log(this.connectedUser?.email)
+    this._userService.getOne(this.connectedUser?.id!).subscribe({
+      next: (user) => {
+        this.userProfile = user;
+      }
+    })
   }
 }

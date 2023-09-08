@@ -36,3 +36,12 @@ export interface UserRegister {
   role: Role;
   numeroTelephone: string;
 }
+
+export interface UserDTO {
+  email: string;
+  firstname: string;
+  lastname: string;
+  birthdate: Date;
+  numeroTelephone: string;
+  role: Role;
+}

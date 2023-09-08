@@ -2,4 +2,35 @@
   <div class="card">
     <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
   </div>
+  <div *ngIf="connectedUser" class="profile">
+    <h2>Profil de {{ userProfile?.email }}</h2>
+    <table>
+      <tr>
+        <th>Firstname</th>
+        <td>{{ userProfile?.firstname }}</td>
+      </tr>
+      <tr>
+        <th>Lastname</th>
+        <td>{{ userProfile?.lastname }}</td>
+      </tr>
+      <tr>
+        <th>Birthdate</th>
+        <td>{{ userProfile?.birthdate }}</td>
+      </tr>
+      <tr>
+        <th>Role</th>
+        <td>{{ userProfile?.role }}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{ userProfile?.email }}</td>
+      </tr>
+      <tr>
+        <th>Numero de Telephone</th>
+        <td>{{ userProfile?.numeroTelephone }}</td>
+      </tr>
+      <!-- Ajoutez d'autres champs de profil ici -->
+    </table>
+  </div>
+
 </section>
