@@ -16,13 +16,20 @@ export interface User {
 }
 
 export interface UserFull {
-  // token:string,
-  // user:User
   id: number,
   email: string,
   role: string,
   token: string
 }
+export interface UserDTO {
+  email: string;
+  firstname: string;
+  lastname: string;
+  birthdate: Date;
+  role: Role;
+  numeroTelephone: string;
+}
+
 export interface UserLogin {
   email: string;
   password: string;
@@ -37,11 +44,3 @@ export interface UserRegister {
   numeroTelephone: string;
 }
 
-export interface UserDTO {
-  email: string;
-  firstname: string;
-  lastname: string;
-  birthdate: Date;
-  role: Role;
-  numeroTelephone: string;
-}

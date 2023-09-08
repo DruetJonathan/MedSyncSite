@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {UserDTO, UserFull} from "../../Models/User";
 import {AuthService} from "../../services/auth.service";
@@ -11,7 +11,7 @@ import {administratifLink, medecinLink} from "../../Models/Link";
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.scss']
 })
-export class PanelComponent {
+export class PanelComponent implements OnInit{
   items: MenuItem[] | undefined;
   isConnected: boolean = false;
 
@@ -38,7 +38,7 @@ export class PanelComponent {
     }
     this.activeItem = this.items[0];
 
-    id: this.connectedUser?.id;
+    // id: this.connectedUser?.id;
 
     this.getProfile();
 

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, tap} from "rxjs";
-import {UserFull} from "../Models/User";
+import {BehaviorSubject, map, Observable, tap} from "rxjs";
+import {UserDTO, UserFull} from "../Models/User";
 import {HttpClient} from "@angular/common/http";
 import {FormGroup} from "@angular/forms";
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
   url: string = "http://localhost:8080/login";
   private readonly AUTH_KEY = 'auth';
   _authSubject$: BehaviorSubject<UserFull | undefined>
-  constructor(private _httpClient : HttpClient) {
+  constructor(private _httpClient : HttpClient, private _userServ: UserService) {
     this._authSubject$ = new BehaviorSubject<UserFull | undefined>(this.authData)
   }
   get authData(): UserFull | undefined {
@@ -38,4 +39,5 @@ export class AuthService {
       } )
     );
   }
+
 }

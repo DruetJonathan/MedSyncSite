@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {UserFull} from "../../Models/User";
 import {AuthService} from "../../services/auth.service";
@@ -11,7 +11,7 @@ import {DemandeService} from "../../services/demande.service";
   templateUrl: './demande.component.html',
   styleUrls: ['./demande.component.scss']
 })
-export class DemandeComponent {
+export class DemandeComponent implements OnInit{
   items: MenuItem[] | undefined;
   demandesUser!: Demande[];
   isConnected: boolean = false;
