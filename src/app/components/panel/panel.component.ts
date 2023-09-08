@@ -15,7 +15,8 @@ export class PanelComponent {
   items: MenuItem[] | undefined;
   isConnected: boolean = false;
 
-  activeItem: MenuItem | undefined;
+  activeItem: MenuItem | undefined
+  //todo regler le probleme que ce n'est pas observable
   connectedUser: UserFull | undefined;
   userProfile : UserDTO | undefined;
 
