@@ -4,8 +4,9 @@
       <img src="assets/images/logo.png" alt="logo">
       <p>MedSync</p>
     </div>
-    <div id="rightContainer">
-      <p>Se déconnecter</p>
+    <div id="rightContainer" *ngIf="getLogin()" >
+      <p>Bienvenu(e) {{connectedUser?.email}}</p>
+      <p (click)="logout()" id="logout">Se déconnecter</p>
     </div>
   </nav>
 </header>

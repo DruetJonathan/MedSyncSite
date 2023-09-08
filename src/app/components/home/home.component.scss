@@ -1,3 +1,4 @@
+/* Ajoutez ces styles dans votre feuille de style CSS */
 section::before {
   content: "";
   position: absolute;
@@ -10,38 +11,57 @@ section::before {
   filter: blur(10px); /* Appliquez le flou ici */
   z-index: -1; /* Assurez-vous que le pseudo-élément est en arrière-plan */
 }
-section{
+section {
   display: flex;
   align-content: center;
   align-items: center;
   justify-content: center;
   height: 95vh;
   overflow-y: hidden;
-  //background-image: url("/assets/images/wp.jpg");
-  //background-position: center;
-  //backdrop-filter: blur(2px);
-  //position: relative; /* Ajoutez la position relative */
-  form{
-    background: #718093;
-    padding: 2rem;
-    margin: 1rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    input{
-      margin: 1rem;
-      width: 100%;
-    }
-    button{
-      background: #fff;
-      width: 100%;
-      border: none;
-      padding: 1rem;
-      margin-top: 2rem;
-      font-family: Candara, serif;
-      font-size: 1rem;
+}
 
-    }
-  }
+.login-form {
+  background: rgba(113, 128, 147, 0.8); /* Ajoutez de la transparence à l'arrière-plan du formulaire */
+  padding: 2rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px; /* Ajoutez des coins arrondis au formulaire */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Ajoutez une ombre légère */
+}
+
+h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.input-text {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px; /* Ajoutez des coins arrondis aux champs de saisie */
+}
+
+.login-button {
+  background: #3498db;
+  color: #fff;
+  width: 100%;
+  border: none;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-family: Candara, serif;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px; /* Ajoutez des coins arrondis au bouton */
+}
+
+.login-button:hover {
+  background: #2980b9; /* Changement de couleur au survol */
 }

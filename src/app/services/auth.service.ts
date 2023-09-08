@@ -8,9 +8,9 @@ import {FormGroup} from "@angular/forms";
   providedIn: 'root'
 })
 export class AuthService {
-  url: string = "localhost:8080/login";
+  url: string = "http://localhost:8080/login";
   private readonly AUTH_KEY = 'auth';
-  private _authSubject$: BehaviorSubject<UserFull | undefined>
+  _authSubject$: BehaviorSubject<UserFull | undefined>
   constructor(private _httpClient : HttpClient) {
     this._authSubject$ = new BehaviorSubject<UserFull | undefined>(this.authData)
   }
@@ -30,6 +30,7 @@ export class AuthService {
     this._authSubject$.next( this.authData )
   }
   login(login:FormGroup):Observable<UserFull>{
+    console.log(login.value)
     return this._httpClient.post<UserFull>(this.url,login).pipe(
       tap( data => {
         sessionStorage.setItem(this.AUTH_KEY, JSON.stringify(data))

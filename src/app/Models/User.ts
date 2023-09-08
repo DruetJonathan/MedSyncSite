@@ -16,8 +16,12 @@ export interface User {
 }
 
 export interface UserFull {
-  token:string,
-  user:User
+  // token:string,
+  // user:User
+  id: number,
+  email: string,
+  role: string,
+  token: string
 }
 export interface UserLogin {
   email: string;

@@ -22,9 +22,29 @@ header{
     #rightContainer{
       margin-right: 1.5rem;
       color: white;
-      p{
+      display: flex;
+      align-items: center;
+      #logout{
+        margin: 1rem;
         cursor: pointer;
       }
     }
   }
+}
+#logout {
+  background: #3498db;
+  color: #fff;
+  width: 200px;
+  border: none;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-family: Candara, serif;
+  font-size: 1rem;
+  text-align:center;
+  cursor: pointer;
+  border-radius: 5px; /* Ajoutez des coins arrondis au bouton */
+}
+
+#logout:hover {
+  background: #2980b9; /* Changement de couleur au survol */
 }

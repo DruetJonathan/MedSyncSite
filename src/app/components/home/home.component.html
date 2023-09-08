@@ -1,9 +1,13 @@
-<app-navbar></app-navbar>
 <section>
-  <form action="">
-    <input type="text" pInputText pTooltip="Enter your email" placeholder="Email">
-<!--    <input type="password" pInputText pTooltip="Enter your password" placeholder="Password">-->
-    <p-password [(ngModel)]="value" [toggleMask]="true" placeholder="Password" pTooltip="Enter your password"></p-password>
-    <button>Se connecter</button>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+    <h2>Connexion</h2>
+    <div class="form-group">
+      <input type="text" class="input-text" pInputText pTooltip="Enter your email" placeholder="Email" formControlName="email">
+    </div>
+    <div class="card flex justify-content-center form-group">
+      <p-password [toggleMask]="true" pTooltip="Enter your password" placeholder="Password" formControlName="password"></p-password>
+    </div>
+    <button class="login-button">Se connecter</button>
   </form>
 </section>
+
