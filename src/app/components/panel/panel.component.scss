@@ -1,21 +1,64 @@
-/* Ajoutez ces styles dans votre feuille de style CSS */
-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("/assets/images/wp.jpg");
-  background-position: center;
-  filter: blur(10px); /* Appliquez le flou ici */
-  z-index: -1; /* Assurez-vous que le pseudo-élément est en arrière-plan */
+///* Ajoutez ces styles dans votre feuille de style CSS */
+//section::before {
+//  content: "";
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+//  right: 0;
+//  bottom: 0;
+//  background-image: url("/assets/images/wp.jpg");
+//  background-position: center;
+//  filter: blur(10px); /* Appliquez le flou ici */
+//  z-index: -1; /* Assurez-vous que le pseudo-élément est en arrière-plan */
+//}
+
+/* Style pour la section du profil */
+.profile {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
-section {
-  //display: flex;
-  //align-content: center;
-  //align-items: center;
-  //justify-content: center;
-  height: 95vh;
-  overflow-y: hidden;
+
+/* Style pour le titre du profil */
+.profile h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
 }
+
+/* Style pour la table du profil */
+.profile table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Style pour les cellules de la table */
+.profile th,
+.profile td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Style pour les en-têtes de colonne */
+.profile th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Style pour les valeurs de colonne */
+.profile td {
+  vertical-align: top;
+}
+
+/* Style pour les liens dans la table (si nécessaire) */
+.profile a {
+  text-decoration: underline;
+  color: #007bff;
+}
+
+/* Style pour les autres champs de profil (si nécessaire) */
+/* Ajoutez vos styles personnalisés ici */

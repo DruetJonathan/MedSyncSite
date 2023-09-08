@@ -39,5 +39,7 @@ export class AuthService {
       } )
     );
   }
-
+  getUserFullDTOSubject(id:number):Observable<UserDTO>{
+    return this._userServ.getOne(id);
+}
 }

@@ -2,7 +2,7 @@
   <div class="card">
     <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
   </div>
-  <div *ngIf="connectedUser" class="profile">
+  <div *ngIf="userSubject | async as userProfile" class="profile">
     <h2>Profil de {{ userProfile?.email }}</h2>
     <table>
       <tr>
