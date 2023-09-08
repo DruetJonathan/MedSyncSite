@@ -13,7 +13,7 @@ import {DemandeService} from "../../services/demande.service";
 })
 export class DemandeComponent {
   items: MenuItem[] | undefined;
-  demandesUser: Demande[] | undefined;
+  demandesUser!: Demande[];
   isConnected: boolean = false;
 
   activeItem: MenuItem | undefined;
@@ -36,9 +36,11 @@ export class DemandeComponent {
     }
     this.activeItem = this.items[0];
     this._demandeServ.getSpecificDemandeForUser(this.connectedUser?.id!).subscribe(
-      value => this.demandesUser = value
+      (value:Demande[]) => {
+        this.demandesUser = value
+        console.log(value)
+      }
     )
-    console.log(this.demandesUser)
   }
 }
 
