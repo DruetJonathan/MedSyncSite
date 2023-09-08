@@ -21,6 +21,7 @@ export class DemandeComponent {
   constructor(private _authServ:AuthService, private _demandeServ:DemandeService) {
   }
   ngOnInit() {
+    ///////////////////////////////////////////////////////////////////
     this._authServ._authSubject$.subscribe( (auth) => {
       this.isConnected = auth !== undefined;
       this.connectedUser = auth;
@@ -35,6 +36,7 @@ export class DemandeComponent {
       this.items = administratifItems;
     }
     this.activeItem = this.items[0]
+    ///////////////////////////////////////////////////////////////////
     // get demande
     this.getDemandes();
   }
