@@ -5,9 +5,31 @@
   <div class="card">
     <p-tabView>
       <p-tabPanel header="Voir les demandes">
-        <p>
-          faire le get de toutes les demandes
-        </p>
+        <table class="styled-table">
+          <thead>
+          <tr>
+            <th>Demande N°</th>
+            <th>Machine</th>
+            <th>Rendez-vous</th>
+            <th>Durée de la réservation</th>
+            <th>Produits</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let demande of demandesUser">
+            <td>{{ demande.id }}</td>
+            <td>{{ demande.machine }}</td>
+            <td>{{ demande.rendezVous ? demande.rendezVous : 'Pas encore de rendez-vous' }}</td>
+            <td>{{ demande.duree | hoursMinutes }}</td>
+            <td>
+              <ul>
+                <li *ngFor="let produit of demande.produits">{{ produit.libele }}</li>
+              </ul>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
       </p-tabPanel>
       <p-tabPanel header="Faire une demande">
         <p>
