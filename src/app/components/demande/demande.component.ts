@@ -4,6 +4,8 @@ import {UserFull} from "../../Models/User";
 import {AuthService} from "../../services/auth.service";
 import { medecinLink } from '../../Models/Link';
 import { administratifLink } from '../../Models/Link';
+import {Demande} from "../../Models/Demande";
+import {DemandeService} from "../../services/demande.service";
 @Component({
   selector: 'app-demande',
   templateUrl: './demande.component.html',
@@ -11,11 +13,12 @@ import { administratifLink } from '../../Models/Link';
 })
 export class DemandeComponent {
   items: MenuItem[] | undefined;
+  demandesUser: Demande[] | undefined;
   isConnected: boolean = false;
 
   activeItem: MenuItem | undefined;
   connectedUser: UserFull | undefined;
-  constructor(private _authServ:AuthService) {
+  constructor(private _authServ:AuthService, private _demandeServ:DemandeService) {
   }
   ngOnInit() {
     this._authServ._authSubject$.subscribe( (auth) => {
@@ -32,6 +35,10 @@ export class DemandeComponent {
       this.items = administratifItems;
     }
     this.activeItem = this.items[0];
+    this._demandeServ.getSpecificDemandeForUser(this.connectedUser?.id!).subscribe(
+      value => this.demandesUser = value
+    )
+    console.log(this.demandesUser)
   }
 }
 

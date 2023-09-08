@@ -5,9 +5,9 @@
   <div class="card">
     <p-tabView>
       <p-tabPanel header="Voir les demandes">
-        <p>
-          faire le get de toutes les demandes
-        </p>
+        <div *ngFor="let demande of demandesUser">
+          <p>{{demande.demandeur}}</p>
+        </div>
       </p-tabPanel>
       <p-tabPanel header="Faire une demande">
         <p>
