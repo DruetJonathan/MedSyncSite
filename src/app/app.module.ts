@@ -16,7 +16,7 @@ import {TabViewModule} from "primeng/tabview";
     HomeComponent,
     NavbarComponent,
     PanelComponent,
-    DemandeComponent
+    DemandeComponent,
   ],
   imports: [
     SharedModule,

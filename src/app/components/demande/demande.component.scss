@@ -19,3 +19,53 @@ section {
   height: 95vh;
   overflow-y: hidden;
 }
+/* Style pour le tableau */
+.styled-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Style pour les en-têtes de colonnes */
+.styled-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+}
+
+/* Style pour les lignes de données */
+.styled-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+tr:nth-child(odd) {
+  background: rgba(113, 128, 147, 0.6); /* Couleur avec opacité de 0.6 */
+}
+
+tr:nth-child(even) {
+  background: rgba(52, 152, 219, 0.6); /* Couleur avec opacité de 0.6 */
+}
+/* Style pour les cellules avec "Pas encore de rendez-vous" */
+.styled-table td:empty::before {
+  content: "Pas encore de rendez-vous";
+  font-style: italic;
+  color: red;
+}
+
+/* Style pour la liste de produits */
+.styled-table ul {
+  list-style: none;
+  padding: 0;
+  height:60px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.styled-table li {
+  margin-bottom: 5px;
+}

@@ -34,7 +34,11 @@ export class DemandeComponent {
     } else {
       this.items = administratifItems;
     }
-    this.activeItem = this.items[0];
+    this.activeItem = this.items[0]
+    // get demande
+    this.getDemandes();
+  }
+  getDemandes() {
     this._demandeServ.getSpecificDemandeForUser(this.connectedUser?.id!).subscribe(
       (value:Demande[]) => {
         this.demandesUser = value
@@ -42,5 +46,7 @@ export class DemandeComponent {
       }
     )
   }
+
+  protected readonly console = console;
 }
 

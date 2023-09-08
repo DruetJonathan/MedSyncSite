@@ -1,13 +1,13 @@
-import {User} from "./User";
+import {User, UserDTO} from "./User";
 import {Machine} from "./Machine";
 import {RendezVous} from "./RendezVous";
-import {Produit} from "./Produit";
+import {Produit, ProduitDTO} from "./Produit";
 
 export interface Demande {
   id: number;
-  produits: Produit[];
+  produits: ProduitDTO[];
   duree: number;
-  demandeur: User;
+  demandeur: UserDTO;
   machine: Machine;
   rendezVous: RendezVous;
 }

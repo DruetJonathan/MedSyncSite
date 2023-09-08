@@ -8,11 +8,14 @@ import {TooltipModule} from "primeng/tooltip";
 import {PasswordModule} from "primeng/password";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {HourMinutePipe} from "../pipe/hours-minutes.pipe";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HourMinutePipe
+  ],
   imports: [
     CommonModule,
     BrowserModule,
@@ -26,7 +29,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
     BrowserAnimationsModule,
     NoopAnimationsModule
   ],
-  exports:[
+  exports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
@@ -37,7 +40,8 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    HourMinutePipe
   ]
 })
 export class SharedModule { }
