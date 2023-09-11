@@ -32,9 +32,32 @@
 
       </p-tabPanel>
       <p-tabPanel header="Faire une demande">
-        <p>
-          faire formulaire de post pour la demande
-        </p>
+<!--        <p>-->
+<!--          faire formulaire de post pour la demande-->
+<!--        </p>-->
+        <form [formGroup]="entityForm" (ngSubmit)="addForm()">
+          <div class="form-group">
+            <label for="produitIds">Produit:</label>
+            <select name="produitIds" id="produitIds" formControlName="produitIds" class="form-control">
+              <option value="{{produit.id}}" *ngFor="let produit of produitsList">{{produit.libele}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="duree">Durée:</label>
+            <input type="number" min="0" id="duree" formControlName="duree" class="form-control">
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="machine">Machine:</label>
+            <input type="text" id="machine" formControlName="machine" class="form-control">
+          </div>
+
+          <button type="submit" [disabled]="entityForm.invalid">Enregistrer</button>
+        </form>
+
       </p-tabPanel>
     </p-tabView>
   </div>

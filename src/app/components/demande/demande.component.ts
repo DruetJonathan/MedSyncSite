@@ -7,6 +7,9 @@ import { administratifLink } from '../../Models/Link';
 import {Demande} from "../../Models/Demande";
 import {DemandeService} from "../../services/demande.service";
 import {Observable} from "rxjs";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ProduitDTO} from "../../Models/Produit";
+import {ProduitService} from "../../services/produit.service";
 @Component({
   selector: 'app-demande',
   templateUrl: './demande.component.html',
@@ -18,8 +21,15 @@ export class DemandeComponent implements OnInit{
   userSubject! : Observable<UserDTO>;
   activeItem: MenuItem | undefined;
   connectedUser: UserFull | undefined;
-
-  constructor(private _authServ:AuthService, private _demandeServ:DemandeService) {
+  entityForm: FormGroup;
+  produitsList!:ProduitDTO[];
+  constructor(private _produitServ:ProduitService,private _authServ:AuthService, private _demandeServ:DemandeService,private fb: FormBuilder) {
+    this.entityForm = this.fb.group({
+      produitIds: ['', Validators.required],
+      duree: ['', [Validators.required,Validators.min(0)]],
+      demandeur: [this.connectedUser?.id, Validators.required],
+      machine: ['',Validators.required] // Si vous souhaitez également inclure le champ machine
+    });
   }
   ngOnInit() {
     this._authServ._authSubject$.subscribe( (auth) => {
@@ -27,6 +37,8 @@ export class DemandeComponent implements OnInit{
       this.connectedUser = auth
       const medecinItems = medecinLink;
       const administratifItems = administratifLink;
+
+      this.getProduits();
       // Filtrer les éléments du menu en fonction du rôle de l'utilisateur
       if (this.connectedUser?.role === 'MEDECIN') {
         this.items = medecinItems;
@@ -49,6 +61,18 @@ export class DemandeComponent implements OnInit{
         console.log(value)
       }
     )
+  }
+
+  getProduits() {
+    this._produitServ.getAllProduits().subscribe(
+      (value:ProduitDTO[]) => {
+        this.produitsList = value
+        console.log(value)
+      }
+    )
+  }
+  addForm(){
+
   }
 
   protected readonly console = console;

@@ -13,5 +13,8 @@ export interface ProduitForm {
   dateExpiration: Date;
 }
 export interface ProduitDTO {
+  id:number;
   libele: string;
+  quantite: number;
+  dateExpiration: Date;
 }
