@@ -94,5 +94,6 @@ export class DemandeComponent implements OnInit{
 
   protected readonly Object = Object;
   protected readonly Machine = Machine;
+
 }
 
