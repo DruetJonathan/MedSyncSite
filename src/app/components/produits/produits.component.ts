@@ -56,27 +56,38 @@ export class ProduitsComponent implements OnInit{
   }
 
   getProduits() {
-    this._produitServ.getAllProduits().subscribe(
-      (value:ProduitDTO[]) => {
-        this.produitsList = value
-        console.log(value)
-      }
-    )
+      this._produitServ.getAllProduits().subscribe(
+        (list) =>{
+          this.produitsList = list;
+        }
+      );
+
   }
 
 
 
-  addForm(){
+  addForm() {
     console.log(this.entityForm.value)
-    if (this.entityForm.valid)
+    if (this.entityForm.valid) {
       console.log(this.entityForm.value)
-    this._produitServ.addProduit(this.entityForm.value).subscribe(
-      ()=>{
-        this.getProduits();
-        this.messages = [{ severity: 'success', summary: 'Success', detail: 'Message Content' }];
+      this.entityForm.get('dateExpiration')?.setValue(new Date(this.entityForm.get('dateExpiration')?.value));
 
+      this._produitServ.addProduit(this.entityForm.value).subscribe(
+        () => {
+          this.getProduits();
+          this.messages = [{severity: 'success', summary: 'Success', detail: 'Ajout du produit sans erreur'}];
+
+        }
+      );
+      this.entityForm.reset()
+    }
+  }
+
+  deleteProduct(id: number) {
+    this._produitServ.removeProduit(id).subscribe(
+      () =>{
+        this.getProduits();
       }
-    );
-    this.entityForm.reset()
+    )
   }
 }

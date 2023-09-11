@@ -11,6 +11,7 @@ import { DemandeComponent } from './components/demande/demande.component';
 import {TabViewModule} from "primeng/tabview";
 import {MessagesModule} from "primeng/messages";
 import { ProduitsComponent } from './components/produits/produits.component';
+import {ButtonModule} from "primeng/button";
 
 @NgModule({
   declarations: [
@@ -21,13 +22,14 @@ import { ProduitsComponent } from './components/produits/produits.component';
     DemandeComponent,
     ProduitsComponent,
   ],
-    imports: [
-        SharedModule,
-        TabMenuModule,
-        TabViewModule,
-        MessagesModule
+  imports: [
+    SharedModule,
+    TabMenuModule,
+    TabViewModule,
+    MessagesModule,
+    ButtonModule
 
-    ],
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -82,7 +82,7 @@ export class DemandeComponent implements OnInit{
       this._demandeServ.addDemande(this.entityForm.value).subscribe(
         ()=>{
           this.getDemandes();
-          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Message Content' }];
+          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Ajout de la demande sans erreur' }];
 
         }
       );

@@ -5,21 +5,25 @@
   <div class="card">
     <p-tabView>
       <p-tabPanel header="Voir les produits">
-        <table class="styled-table">
+        <table class="styled-table" *ngIf="produitsList">
           <thead>
           <tr>
             <th>Produit N°</th>
             <th>Libelé</th>
             <th>Quantité</th>
             <th>Date d'expiration</th>
+            <th>Actions</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let produits of produitsList">
-            <td>{{ produits.id }}</td>
-            <td>{{ produits.libele }}</td>
-            <td>{{ produits.quantite}}</td>
-            <td>{{ produits.dateExpiration}}</td>
+          <tr *ngFor="let produit of produitsList">
+            <td>{{ produit.id }}</td>
+            <td>{{ produit.libele }}</td>
+            <td>{{ produit.quantite}}</td>
+            <td>{{ produit.dateExpiration}}</td>
+            <td>
+              <p-button label="Supprimer" styleClass="p-button-danger" (click)="deleteProduct(produit.id)"></p-button>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -27,6 +31,9 @@
       </p-tabPanel>
 
       <p-tabPanel header="Ajouter un produit">
+        <p-messages [(value)]="messages" [enableService]="false" [closable]="true">
+
+        </p-messages>
         <form [formGroup]="entityForm" (ngSubmit)="addForm()">
 
           <div class="form-group">

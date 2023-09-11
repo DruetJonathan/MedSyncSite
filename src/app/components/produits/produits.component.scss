@@ -1,3 +1,4 @@
+/* Style de la section principale */
 section {
   display: flex;
   flex-direction: column;
@@ -13,6 +14,8 @@ section {
   padding: 20px;
   margin: 10px;
   background-color: #fff;
+  //width: 100%; /* Ajustez la largeur selon vos besoins */
+  max-width: 1200px; /* Ajoutez une largeur maximale */
 }
 
 /* Style du p-tabMenu (onglets) */
@@ -24,47 +27,44 @@ p-tabMenu {
 /* Style du p-tabPanel (contenu des onglets) */
 p-tabPanel {
   padding: 20px;
-
 }
 
 /* Style du tableau */
-.styled-table {
-  width: 1200px;
+table.styled-table {
+  width: 1000px;
   border-collapse: collapse;
   margin-top: 20px;
   text-align: center;
 }
 
-.styled-table th,
-.styled-table td {
+table.styled-table th,
+table.styled-table td {
   border: 1px solid #ccc;
   padding: 10px;
   background: rgba(113, 128, 147, 0.6); /* Couleur avec opacité de 0.6 */
 }
 
-.styled-table td:nth-child(even) {
+table.styled-table td:nth-child(even) {
   background: rgba(52, 152, 219, 0.6); /* Couleur avec opacité de 0.6 */
 }
 
 /* Style pour la liste de produits */
-.styled-table ul {
+ul.styled-table {
   list-style: none;
   padding: 0;
-  height: 60px;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  max-height: 200px; /* Ajustez la hauteur maximale selon vos besoins */
+  overflow-y: auto; /* Ajoutez une barre de défilement vertical si nécessaire */
 }
 
-.styled-table li {
+ul.styled-table li {
   margin-bottom: 5px;
 }
 
 /* Style du formulaire */
 form {
   margin-top: 20px;
+  width: 100%; /* Ajustez la largeur selon vos besoins */
+  max-width: 400px; /* Ajoutez une largeur maximale */
 }
 
 .form-group {
@@ -75,7 +75,9 @@ label {
   font-weight: bold;
 }
 
+input[type="text"],
 input[type="number"],
+input[type="date"],
 select,
 button {
   width: 100%;
