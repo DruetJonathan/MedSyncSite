@@ -12,6 +12,9 @@ import {TabViewModule} from "primeng/tabview";
 import {MessagesModule} from "primeng/messages";
 import { ProduitsComponent } from './components/produits/produits.component';
 import {ButtonModule} from "primeng/button";
+import {DateFormatPipe} from "./pipe/date-format.pipe";
+import {CommonModule} from "@angular/common";
+
 
 @NgModule({
   declarations: [
@@ -21,13 +24,15 @@ import {ButtonModule} from "primeng/button";
     PanelComponent,
     DemandeComponent,
     ProduitsComponent,
+    DateFormatPipe,
   ],
   imports: [
     SharedModule,
     TabMenuModule,
     TabViewModule,
     MessagesModule,
-    ButtonModule
+    ButtonModule,
+    CommonModule
 
   ],
   providers: [],

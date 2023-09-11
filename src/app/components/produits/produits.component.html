@@ -20,7 +20,7 @@
             <td>{{ produit.id }}</td>
             <td>{{ produit.libele }}</td>
             <td>{{ produit.quantite}}</td>
-            <td>{{ produit.dateExpiration}}</td>
+            <td>{{ produit.dateExpiration | dateFormat}}</td>
             <td>
               <p-button label="Supprimer" styleClass="p-button-danger" (click)="deleteProduct(produit.id)"></p-button>
             </td>
