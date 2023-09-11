@@ -9,7 +9,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Demande} from "../../Models/Demande";
 import {Observable} from "rxjs";
 import {UserDTO, UserFull} from "../../Models/User";
-import {ProduitDTO} from "../../Models/Produit";
+import {Produit, ProduitDTO} from "../../Models/Produit";
 
 @Component({
   selector: 'app-produits',
@@ -24,17 +24,23 @@ export class ProduitsComponent implements OnInit{
   activeItem: MenuItem | undefined;
   connectedUser: UserFull | undefined;
   entityForm: FormGroup;
+  modificationForm: FormGroup;
   produitsList!:ProduitDTO[];
   messages!: Message[];
-
+  toggleDivModification : Boolean = false;
   constructor(private _router:Router,private _produitServ:ProduitService,private _authServ:AuthService, private _demandeServ:DemandeService,private fb: FormBuilder) {
     this.entityForm = this.fb.group({
-      libele: [[], Validators.required],
+      libele: ['', Validators.required],
       quantite: ['', [Validators.required,Validators.min(0)]],
       dateExpiration: [null, Validators.required],
     });
+    this.modificationForm = this.fb.group({
+      id: ['', Validators.required],
+      libele: [, Validators.required],
+      quantite: ['', [Validators.required,Validators.min(0)]],
+      dateExpiration: ['', Validators.required],
+    });
   }
-
   ngOnInit() {
 
     this._authServ._authSubject$.subscribe( (auth) => {
@@ -54,7 +60,6 @@ export class ProduitsComponent implements OnInit{
       console.log(auth)
     } );
   }
-
   getProduits() {
       this._produitServ.getAllProduits().subscribe(
         (list) =>{
@@ -63,9 +68,6 @@ export class ProduitsComponent implements OnInit{
       );
 
   }
-
-
-
   addForm() {
     console.log(this.entityForm.value)
     if (this.entityForm.valid) {
@@ -82,12 +84,44 @@ export class ProduitsComponent implements OnInit{
       this.entityForm.reset()
     }
   }
-
   deleteProduct(id: number) {
     this._produitServ.removeProduit(id).subscribe(
       () =>{
         this.getProduits();
       }
     )
+  }
+
+  toggleModificationScreenForLoadingDiv(produit: ProduitDTO) {
+    this.toggleModificationScreen();
+    this.modificationForm.reset();
+    // FAUT FORMATTER LA DATE CAR DATE DE BASE EN ISO ,.. ET HTML NE RECONNAIS PAS CA
+    const dateExpiration = new Date(produit.dateExpiration);
+    const formattedDate = `${dateExpiration.getFullYear()}-${(dateExpiration.getMonth() + 1).toString().padStart(2, '0')}-${dateExpiration.getDate().toString().padStart(2, '0')}`;
+
+    // Remplir le formulaire de modification avec la date formatée
+    this.modificationForm.patchValue({
+      id: produit.id,
+      libele: produit.libele,
+      quantite: produit.quantite,
+
+      dateExpiration: formattedDate, // Assurez-vous que la valeur est une instance Date
+    });
+  }
+  toggleModificationScreen(){
+    this.toggleDivModification = !this.toggleDivModification;
+
+
+  }
+  modificationProduit() {
+    if (this.modificationForm.valid) {
+
+      this._produitServ.updateProduit(this.modificationForm.get('id')?.value, this.modificationForm.value).subscribe(
+        () => {
+          this.getProduits();
+        }
+      );
+    }
+    this.toggleModificationScreen()
   }
 }

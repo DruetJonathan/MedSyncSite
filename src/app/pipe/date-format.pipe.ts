@@ -9,7 +9,7 @@ export class DateFormatPipe implements PipeTransform {
   transform(value: string | Date): string {
     if (value) {
       const datePipe = new DatePipe('en-US');
-      return <string>datePipe.transform(value, 'dd-MM-yyyy');
+      return <string>datePipe.transform(value, 'dd/MM/yyyy');
     }
     return '';
   }

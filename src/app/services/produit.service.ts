@@ -25,6 +25,11 @@ export class ProduitService {
   }
 
   updateProduit(id:number,produit:ProduitDTO):Observable<ProduitDTO>{
+
+   const test = new Date(produit.dateExpiration).toISOString();
+   // @ts-ignore
+    produit.dateExpiration = test;
+    console.log(test)
     return this._httpClient.put<ProduitDTO>(`${this.url}/${id}`,produit);
   }
 

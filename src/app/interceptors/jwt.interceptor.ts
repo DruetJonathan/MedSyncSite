@@ -15,15 +15,15 @@ export class JwtInterceptor implements HttpInterceptor {
   constructor(private _authServ:AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log('on passe par ici')
+    // console.log('on passe par ici')
     let user = this._authServ.authData;
-    console.log(user)
+    // console.log(user)
     if( user ) {
       let headers = new HttpHeaders();
       let token = user.token;
       headers = headers.append('Authorization', `Bearer ${token}`);
       const newRequest = request.clone({ headers: headers })
-      console.log(token)
+      // console.log(token)
       return next.handle(newRequest)
     }
 

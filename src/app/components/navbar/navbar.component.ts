@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit{
     this._authServ._authSubject$.subscribe( (auth) => {
       this.isConnected = auth !== undefined;
       this.connectedUser = auth;
-      console.log(auth)
+      // console.log(auth)
     } );
   }
 

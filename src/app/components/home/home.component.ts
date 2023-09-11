@@ -18,7 +18,6 @@ export class HomeComponent {
   }
   login(){
 
-    console.log(this.loginForm.value)
     if (this.loginForm.valid){
       this._authServ.login(this.loginForm.value).subscribe({
         next: (result) => console.log(result)

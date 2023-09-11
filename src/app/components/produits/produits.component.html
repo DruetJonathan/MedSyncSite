@@ -23,6 +23,7 @@
             <td>{{ produit.dateExpiration | dateFormat}}</td>
             <td>
               <p-button label="Supprimer" styleClass="p-button-danger" (click)="deleteProduct(produit.id)"></p-button>
+              <p-button label="Modifier" styleClass="p-button-warning" (click)="toggleModificationScreenForLoadingDiv(produit)"></p-button>
             </td>
           </tr>
           </tbody>
@@ -56,5 +57,32 @@
         </form>
       </p-tabPanel>
     </p-tabView>
+  </div>
+  <div *ngIf="toggleDivModification" id="mainContainer">
+    <div>
+      <h2>Modification produit</h2>
+
+      <form [formGroup]="modificationForm" (ngSubmit)="modificationProduit()">
+        <div class="form-group">
+          <label for="libele2">Libelé:</label>
+          <input type="text"  id="libele2" formControlName="libele" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="quantite2">Quantité:</label>
+          <input type="number" min="0" id="quantite2" formControlName="quantite" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="dateExpiration2">Date d'expiration:</label>
+          <input type="date" id="dateExpiration2" formControlName="dateExpiration" class="form-control">
+        </div>
+
+
+        <button type="submit" [disabled]="modificationForm.invalid">Enregistrer</button>
+        <span class="cross" (click)="toggleModificationScreen()">❌</span>
+
+      </form>
+    </div>
   </div>
 </section>
