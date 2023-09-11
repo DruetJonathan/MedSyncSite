@@ -9,6 +9,7 @@ import { PanelComponent } from './components/panel/panel.component';
 import {TabMenuModule} from "primeng/tabmenu";
 import { DemandeComponent } from './components/demande/demande.component';
 import {TabViewModule} from "primeng/tabview";
+import {MessagesModule} from "primeng/messages";
 
 @NgModule({
   declarations: [
@@ -18,12 +19,13 @@ import {TabViewModule} from "primeng/tabview";
     PanelComponent,
     DemandeComponent,
   ],
-  imports: [
-    SharedModule,
-    TabMenuModule,
-    TabViewModule
+    imports: [
+        SharedModule,
+        TabMenuModule,
+        TabViewModule,
+        MessagesModule
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -24,8 +24,8 @@ export class DemandeService {
     console.log(id)
     return this._httpClient.delete<String>(this.url+"/"+id);
   }
-  addDemande(id:number,demande:Demande):Observable<DemandeForm>{
-    console.log(id)
+  addDemande(demande:DemandeForm):Observable<DemandeForm>{
+    // console.log(demande)
     return this._httpClient.post<DemandeForm>(this.url+"/add",demande);
   }
   getAllDemande(id:number):Observable<Demande[]>{

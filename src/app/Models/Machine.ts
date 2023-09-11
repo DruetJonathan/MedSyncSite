@@ -15,5 +15,5 @@ export enum Machine {
   SYSTEME_D_DIALYSE = 'système de dialyse',
   SYSTEME_D_ANALGESIE = 'système d\'analgésie',
   SYSTEME_D_ANESTHESIE = 'système d\'anesthésie'
-
 }
+export type MachineEnum = keyof typeof Machine;

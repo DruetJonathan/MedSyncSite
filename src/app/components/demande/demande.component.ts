@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MenuItem} from "primeng/api";
+import {MenuItem, Message} from "primeng/api";
 import {UserDTO, UserFull} from "../../Models/User";
 import {AuthService} from "../../services/auth.service";
 import { medecinLink } from '../../Models/Link';
@@ -10,6 +10,8 @@ import {Observable} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ProduitDTO} from "../../Models/Produit";
 import {ProduitService} from "../../services/produit.service";
+import {Machine} from "../../Models/Machine";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-demande',
   templateUrl: './demande.component.html',
@@ -23,15 +25,17 @@ export class DemandeComponent implements OnInit{
   connectedUser: UserFull | undefined;
   entityForm: FormGroup;
   produitsList!:ProduitDTO[];
-  constructor(private _produitServ:ProduitService,private _authServ:AuthService, private _demandeServ:DemandeService,private fb: FormBuilder) {
+  messages!: Message[];
+  constructor(private _router:Router,private _produitServ:ProduitService,private _authServ:AuthService, private _demandeServ:DemandeService,private fb: FormBuilder) {
     this.entityForm = this.fb.group({
-      produitIds: ['', Validators.required],
+      produitIds: [[], Validators.required],
       duree: ['', [Validators.required,Validators.min(0)]],
       demandeur: [this.connectedUser?.id, Validators.required],
       machine: ['',Validators.required] // Si vous souhaitez également inclure le champ machine
     });
   }
   ngOnInit() {
+
     this._authServ._authSubject$.subscribe( (auth) => {
       this.userSubject = this._authServ.getUserFullDTOSubject(auth?.id!)
       this.connectedUser = auth
@@ -47,13 +51,14 @@ export class DemandeComponent implements OnInit{
       }
       this.activeItem = this.items[0];
       this.getDemandes();
-
+      this.entityForm.get('demandeur')?.setValue(this.connectedUser?.id);
       console.log(auth)
     } );
 
 
 
   }
+
   getDemandes() {
     this._demandeServ.getSpecificDemandeForUser(this.connectedUser?.id!).subscribe(
       (value:Demande[]) => {
@@ -72,9 +77,22 @@ export class DemandeComponent implements OnInit{
     )
   }
   addForm(){
+    if (this.entityForm.valid)
+      console.log(this.entityForm.value)
+      this._demandeServ.addDemande(this.entityForm.value).subscribe(
+        ()=>{
+          this.getDemandes();
+          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Message Content' }];
+
+        }
+      );
+    this.entityForm.reset()
+    this.entityForm.get('demandeur')?.setValue(this.connectedUser?.id);
+
 
   }
 
-  protected readonly console = console;
+  protected readonly Object = Object;
+  protected readonly Machine = Machine;
 }
 
