@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ProduitDTO} from "../Models/Produit";
+import {ProduitDTO, ProduitForm} from "../Models/Produit";
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +20,8 @@ export class ProduitService {
     return this._httpClient.get<ProduitDTO>(`${this.url}/${id}`)
   }
 
-  addProduit(produit:ProduitDTO):Observable<ProduitDTO>{
-    return this._httpClient.post<ProduitDTO>(this.url,produit);
+  addProduit(produit:ProduitForm):Observable<ProduitForm>{
+    return this._httpClient.post<ProduitForm>(this.url+"/add",produit);
   }
 
   updateProduit(id:number,produit:ProduitDTO):Observable<ProduitDTO>{

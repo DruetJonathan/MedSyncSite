@@ -1,0 +1,53 @@
+<section>
+  <div class="card">
+    <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
+  </div>
+  <div class="card">
+    <p-tabView>
+      <p-tabPanel header="Voir les produits">
+        <table class="styled-table">
+          <thead>
+          <tr>
+            <th>Produit N°</th>
+            <th>Libelé</th>
+            <th>Quantité</th>
+            <th>Date d'expiration</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let produits of produitsList">
+            <td>{{ produits.id }}</td>
+            <td>{{ produits.libele }}</td>
+            <td>{{ produits.quantite}}</td>
+            <td>{{ produits.dateExpiration}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+      </p-tabPanel>
+
+      <p-tabPanel header="Ajouter un produit">
+        <form [formGroup]="entityForm" (ngSubmit)="addForm()">
+
+          <div class="form-group">
+            <label for="libele">Libelé:</label>
+            <input type="text"  id="libele" formControlName="libele" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="quantite">Quantité:</label>
+            <input type="number" min="0" id="quantite" formControlName="quantite" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="dateExpiration">Date d'expiration:</label>
+            <input type="date" id="dateExpiration" formControlName="dateExpiration" class="form-control">
+          </div>
+
+
+          <button type="submit" [disabled]="entityForm.invalid">Enregistrer</button>
+        </form>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</section>
