@@ -15,4 +15,20 @@ export class ProduitService {
   getAllProduits():Observable<ProduitDTO[]>{
     return this._httpClient.get<ProduitDTO[]>(this.url)
 }
+
+  getProduitById(id:number):Observable<ProduitDTO>{
+    return this._httpClient.get<ProduitDTO>(`${this.url}/${id}`)
+  }
+
+  addProduit(produit:ProduitDTO):Observable<ProduitDTO>{
+    return this._httpClient.post<ProduitDTO>(this.url,produit);
+  }
+
+  updateProduit(id:number,produit:ProduitDTO):Observable<ProduitDTO>{
+    return this._httpClient.put<ProduitDTO>(`${this.url}/${id}`,produit);
+  }
+
+  removeProduit(id:number):Observable<String>{
+    return this._httpClient.delete<String>(`${this.url}/${id}`);
+  }
 }

@@ -14,3 +14,11 @@ export interface SalleForm {
   machine: Machine;
   rendezVous: number[];
 }
+
+export interface SalleDTO {
+  id:number;
+  etage: number;
+  numeroSalle: string;
+  machine: Machine;
+  rendezVous: RendezVous[];
+}
