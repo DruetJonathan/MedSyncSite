@@ -10,6 +10,7 @@ import {AccesDeniedComponent} from "./components/acces-denied/acces-denied.compo
 import {authGuard} from "./guard/auth.guard";
 import {authMedecinGuard} from "./guard/auth-medecin.guard";
 import {authAdministratifGuard} from "./guard/auth-administratif.guard";
+import {NotFoundComponent} from "./components/not-found/not-found.component";
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:"demandes",component:DemandeComponent, canActivate:[authMedecinGuard]},
   {path:"salles",component:DemandeComponent, canActivate:[authAdministratifGuard]},
   {path:"produits", component: ProduitsComponent, canActivate:[authAdministratifGuard]},
-  {path:"accesDenied", component: AccesDeniedComponent}
+  {path:"accesDenied", component: AccesDeniedComponent},
+  {path:"**", component: NotFoundComponent}
 ];
 
 @NgModule({

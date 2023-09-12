@@ -16,6 +16,7 @@ import {DateFormatPipe} from "./pipe/date-format.pipe";
 import {CommonModule} from "@angular/common";
 import {PaginatorModule} from "primeng/paginator";
 import { AccesDeniedComponent } from './components/acces-denied/acces-denied.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AccesDeniedComponent } from './components/acces-denied/acces-denied.com
     ProduitsComponent,
     DateFormatPipe,
     AccesDeniedComponent,
+    NotFoundComponent,
   ],
     imports: [
         SharedModule,
