@@ -4,26 +4,25 @@
   </div>
   <div class="card">
     <p-tabView>
-      <p-tabPanel header="Voir les produits">
-        <input type="text" class="search" placeholder="Rechercher un produit..." [(ngModel)]="searchTerm">
-        <table class="styled-table" *ngIf="produitsList">
+      <p-tabPanel header="Voir les salles">
+        <input type="text" class="search" placeholder="Rechercher par nom de machine..." [(ngModel)]="searchTerm">
+        <table class="styled-table" *ngIf="sallesList">
           <thead>
           <tr>
-            <!--            <th>Produit N°</th>-->
-            <th>Libelé</th>
-            <th>Quantité</th>
-            <th>Date d'expiration</th>
+            <th>Etage</th>
+            <th>Numéro de salle</th>
+            <th>Machine</th>
             <th>Actions</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let produit of filterProducts()">            <!--            <td>{{ produit.id }}</td>-->
-            <td>{{ produit.libele }}</td>
-            <td>{{ produit.quantite}}</td>
-            <td>{{ produit.dateExpiration | dateFormat}}</td>
+          <tr *ngFor="let salle of filterSalle()">            <!--            <td>{{ produit.id }}</td>-->
+            <td>{{ salle.etage }}</td>
+            <td>{{ salle.numeroSalle}}</td>
+            <td>{{ salle.machine}}</td>
             <td>
-              <p-button label="Supprimer" styleClass="p-button-danger" (click)="deleteProduct(produit.id)"></p-button>
-              <p-button label="Modifier" styleClass="p-button-warning" (click)="toggleModificationScreenForLoadingDiv(produit)"></p-button>
+              <p-button label="Supprimer" styleClass="p-button-danger" (click)="deleteSalle(salle.id)"></p-button>
+              <p-button label="Modifier" styleClass="p-button-warning" (click)="toggleModificationScreenForLoadingDiv(salle)"></p-button>
             </td>
           </tr>
           </tbody>
@@ -31,25 +30,27 @@
 
       </p-tabPanel>
 
-      <p-tabPanel header="Ajouter un produit">
+      <p-tabPanel header="Ajouter une salle">
         <p-messages [(value)]="messages" [enableService]="false" [closable]="true">
 
         </p-messages>
         <form [formGroup]="entityForm" (ngSubmit)="addForm()">
 
           <div class="form-group">
-            <label for="libele">Libelé:</label>
-            <input type="text"  id="libele" formControlName="libele" class="form-control">
+            <label for="etage">etage:</label>
+            <input type="number"  min="0" id="etage" formControlName="etage" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="numeroSalle">numéro de salle:</label>
+            <input type="number" min="0" id="numeroSalle" formControlName="numeroSalle" class="form-control">
           </div>
 
           <div class="form-group">
-            <label for="quantite">Quantité:</label>
-            <input type="number" min="0" id="quantite" formControlName="quantite" class="form-control">
-          </div>
+            <label for="machine">Machine:</label>
+            <select formControlName="machine" id="machine">
+              <option *ngFor="let machine of Object.values(Machine)" value="{{machine}}">{{ machine }}</option>
+            </select>
 
-          <div class="form-group">
-            <label for="dateExpiration">Date d'expiration:</label>
-            <input type="date" id="dateExpiration" formControlName="dateExpiration" class="form-control">
           </div>
 
 
@@ -60,29 +61,31 @@
   </div>
   <div *ngIf="toggleDivModification" id="mainContainer">
     <div>
-      <h2>Modification produit</h2>
+      <h2>Modification salle</h2>
 
-      <form [formGroup]="modificationForm" (ngSubmit)="modificationProduit()">
+      <form [formGroup]="modificationForm" (ngSubmit)="modificationSalle()">
+
         <div class="form-group">
-          <label for="libele2">Libelé:</label>
-          <input type="text"  id="libele2" formControlName="libele" class="form-control">
+          <label for="etage3">etage:</label>
+          <input type="number"  min="0" id="etage3" formControlName="etage" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="numeroSalle3">numéro de salle:</label>
+          <input type="number" min="0" id="numeroSalle3" formControlName="numeroSalle" class="form-control">
         </div>
 
         <div class="form-group">
-          <label for="quantite2">Quantité:</label>
-          <input type="number" min="0" id="quantite2" formControlName="quantite" class="form-control">
+          <label for="machine3">Machine:</label>
+          <select formControlName="machine" id="machine3">
+            <option *ngFor="let machine of Object.values(Machine)" value="{{machine}}">{{ machine }}</option>
+          </select>
+
         </div>
 
-        <div class="form-group">
-          <label for="dateExpiration2">Date d'expiration:</label>
-          <input type="date" id="dateExpiration2" formControlName="dateExpiration" class="form-control">
-        </div>
-
-
-        <button type="submit" [disabled]="modificationForm.invalid">Enregistrer</button>
         <span class="cross" (click)="toggleModificationScreen()">❌</span>
 
+        <button type="submit" [disabled]="modificationForm.invalid">Enregistrer</button>
       </form>
-    </div>
+  </div>
   </div>
 </section>

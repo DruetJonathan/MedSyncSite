@@ -22,7 +22,7 @@ export class SalleService {
   }
 
   addSalle(salle: SalleDTO): Observable<SalleDTO> {
-    return this._httpClient.post<SalleDTO>(this.url, salle);
+    return this._httpClient.post<SalleDTO>(this.url+"/add", salle);
   }
 
   updateSalle(id: number, salle: SalleDTO): Observable<SalleDTO> {
