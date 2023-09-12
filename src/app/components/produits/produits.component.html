@@ -5,7 +5,7 @@
   <div class="card">
     <p-tabView>
       <p-tabPanel header="Voir les produits">
-        <input type="text" class="search" placeholder="Rechercher un produit..." [(ngModel)]="searchTerm">
+          <input type="text" class="search" placeholder="Rechercher un produit..." [(ngModel)]="searchTerm">
         <table class="styled-table" *ngIf="produitsList">
           <thead>
           <tr>
@@ -17,8 +17,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let produit of filterProducts()">
-<!--            <td>{{ produit.id }}</td>-->
+          <tr *ngFor="let produit of filterProducts()">            <!--            <td>{{ produit.id }}</td>-->
             <td>{{ produit.libele }}</td>
             <td>{{ produit.quantite}}</td>
             <td>{{ produit.dateExpiration | dateFormat}}</td>
@@ -29,6 +28,7 @@
           </tr>
           </tbody>
         </table>
+
 
       </p-tabPanel>
 

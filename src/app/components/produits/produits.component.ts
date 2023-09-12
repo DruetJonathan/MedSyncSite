@@ -124,7 +124,6 @@ export class ProduitsComponent implements OnInit{
     }
     this.toggleModificationScreen()
   }
-
   searchTerm: string = '';
   filterProducts(): ProduitDTO[] {
     if (!this.searchTerm.trim()) {
@@ -137,4 +136,6 @@ export class ProduitsComponent implements OnInit{
       produit.libele.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
+
+  protected readonly document = document;
 }
