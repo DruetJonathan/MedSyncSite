@@ -20,9 +20,10 @@ export class HomeComponent {
 
     if (this.loginForm.valid){
       this._authServ.login(this.loginForm.value).subscribe({
-        next: (result) => console.log(result)
+        next: (result) => {console.log(result)
+        this._router.navigateByUrl("/panel")}
+
       });
-      this._router.navigateByUrl("/panel")
     }
     else{
       this.loginForm.markAllAsTouched()

@@ -1,7 +1,7 @@
 <header>
   <nav>
     <div id="leftContainer" routerLink="/panel">
-      <img src="assets/images/logo.png" alt="logo" >
+      <img src="assets/images/logo.png" alt="logo">
       <p>MedSync</p>
     </div>
     <div id="rightContainer" *ngIf="getLogin()" >
@@ -9,4 +9,5 @@
       <p (click)="logout()" id="logout">Se déconnecter</p>
     </div>
   </nav>
+  <a routerLink="" *ngIf="!connectedUser">Connexion</a>
 </header>
