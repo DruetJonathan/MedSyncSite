@@ -8,7 +8,7 @@
         <table class="styled-table" *ngIf="produitsList">
           <thead>
           <tr>
-            <th>Produit N°</th>
+<!--            <th>Produit N°</th>-->
             <th>Libelé</th>
             <th>Quantité</th>
             <th>Date d'expiration</th>
@@ -17,7 +17,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let produit of produitsList">
-            <td>{{ produit.id }}</td>
+<!--            <td>{{ produit.id }}</td>-->
             <td>{{ produit.libele }}</td>
             <td>{{ produit.quantite}}</td>
             <td>{{ produit.dateExpiration | dateFormat}}</td>
