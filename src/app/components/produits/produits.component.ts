@@ -10,6 +10,7 @@ import {Demande} from "../../Models/Demande";
 import {Observable} from "rxjs";
 import {UserDTO, UserFull} from "../../Models/User";
 import {Produit, ProduitDTO} from "../../Models/Produit";
+import {PaginatorState} from "primeng/paginator";
 
 @Component({
   selector: 'app-produits',
@@ -137,5 +138,4 @@ export class ProduitsComponent implements OnInit{
     );
   }
 
-  protected readonly document = document;
-}
+ }
