@@ -6,12 +6,18 @@ import {DemandeComponent} from "./components/demande/demande.component";
 import {JwtInterceptor} from "./interceptors/jwt.interceptor";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {ProduitsComponent} from "./components/produits/produits.component";
+import {AccesDeniedComponent} from "./components/acces-denied/acces-denied.component";
+import {authGuard} from "./guard/auth.guard";
+import {authMedecinGuard} from "./guard/auth-medecin.guard";
+import {authAdministratifGuard} from "./guard/auth-administratif.guard";
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
-  {path:"panel",component:PanelComponent},
-  {path:"demandes",component:DemandeComponent},
-  {path:"produits", component: ProduitsComponent}
+  {path:"panel",component:PanelComponent,canActivate:[authGuard]},
+  {path:"demandes",component:DemandeComponent, canActivate:[authMedecinGuard]},
+  {path:"salles",component:DemandeComponent, canActivate:[authAdministratifGuard]},
+  {path:"produits", component: ProduitsComponent, canActivate:[authAdministratifGuard]},
+  {path:"accesDenied", component: AccesDeniedComponent}
 ];
 
 @NgModule({

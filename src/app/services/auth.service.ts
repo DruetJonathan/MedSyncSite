@@ -14,6 +14,8 @@ export class AuthService {
   _authSubject$: BehaviorSubject<UserFull | undefined>
   constructor(private _httpClient : HttpClient, private _userServ: UserService) {
     this._authSubject$ = new BehaviorSubject<UserFull | undefined>(this.authData)
+    this.isloggedIn=false;
+
   }
   get authData(): UserFull | undefined {
     const authDataString = sessionStorage.getItem(this.AUTH_KEY)
@@ -32,6 +34,8 @@ export class AuthService {
   }
   login(login:FormGroup):Observable<UserFull>{
     console.log(login.value)
+    this.isloggedIn = true;
+
     return this._httpClient.post<UserFull>(this.url,login).pipe(
       tap( data => {
         sessionStorage.setItem(this.AUTH_KEY, JSON.stringify(data))
@@ -42,4 +46,14 @@ export class AuthService {
   getUserFullDTOSubject(id:number):Observable<UserDTO>{
     return this._userServ.getOne(id);
 }
+  isUserLoggedIn(): boolean {
+    return this.isloggedIn;
+  }
+
+  getRoleUser():string{
+    return this.authData?.role!;
+  }
+
+  private isloggedIn: boolean;
+
 }

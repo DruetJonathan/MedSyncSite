@@ -15,6 +15,7 @@ import {ButtonModule} from "primeng/button";
 import {DateFormatPipe} from "./pipe/date-format.pipe";
 import {CommonModule} from "@angular/common";
 import {PaginatorModule} from "primeng/paginator";
+import { AccesDeniedComponent } from './components/acces-denied/acces-denied.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {PaginatorModule} from "primeng/paginator";
     DemandeComponent,
     ProduitsComponent,
     DateFormatPipe,
+    AccesDeniedComponent,
   ],
     imports: [
         SharedModule,
