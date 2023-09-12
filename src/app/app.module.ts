@@ -14,6 +14,7 @@ import { ProduitsComponent } from './components/produits/produits.component';
 import {ButtonModule} from "primeng/button";
 import {DateFormatPipe} from "./pipe/date-format.pipe";
 import {CommonModule} from "@angular/common";
+import {PaginatorModule} from "primeng/paginator";
 
 
 @NgModule({
@@ -26,15 +27,16 @@ import {CommonModule} from "@angular/common";
     ProduitsComponent,
     DateFormatPipe,
   ],
-  imports: [
-    SharedModule,
-    TabMenuModule,
-    TabViewModule,
-    MessagesModule,
-    ButtonModule,
-    CommonModule
+    imports: [
+        SharedModule,
+        TabMenuModule,
+        TabViewModule,
+        MessagesModule,
+        ButtonModule,
+        CommonModule,
+        PaginatorModule
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
