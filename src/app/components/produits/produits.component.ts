@@ -124,4 +124,17 @@ export class ProduitsComponent implements OnInit{
     }
     this.toggleModificationScreen()
   }
+
+  searchTerm: string = '';
+  filterProducts(): ProduitDTO[] {
+    if (!this.searchTerm.trim()) {
+      // Si le terme de recherche est vide, retournez la liste complète.
+      return this.produitsList;
+    }
+
+    // Filtrer les produits dont le libellé contient le terme de recherche (insensible à la casse).
+    return this.produitsList.filter(produit =>
+      produit.libele.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
 }
