@@ -13,8 +13,8 @@ export class SalleService {
   constructor(private _httpClient: HttpClient) {
   }
 
-  getAllSalles(): Observable<SalleDTO> {
-    return this._httpClient.get<SalleDTO>(this.url);
+  getAllSalles(): Observable<SalleDTO[]> {
+    return this._httpClient.get<SalleDTO[]>(this.url);
   }
 
   getSalleById(id: number): Observable<SalleDTO> {

@@ -17,6 +17,7 @@ import {CommonModule} from "@angular/common";
 import {PaginatorModule} from "primeng/paginator";
 import { AccesDeniedComponent } from './components/acces-denied/acces-denied.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SallesComponent } from './components/salles/salles.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     DateFormatPipe,
     AccesDeniedComponent,
     NotFoundComponent,
+    SallesComponent,
   ],
     imports: [
         SharedModule,
