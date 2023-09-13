@@ -37,7 +37,7 @@ export class ProduitsComponent implements OnInit{
     });
     this.modificationForm = this.fb.group({
       id: ['', Validators.required],
-      libele: [, Validators.required],
+      libele: ['', Validators.required],
       quantite: ['', [Validators.required,Validators.min(0)]],
       dateExpiration: ['', Validators.required],
     });

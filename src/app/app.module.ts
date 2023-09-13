@@ -18,6 +18,7 @@ import {PaginatorModule} from "primeng/paginator";
 import { AccesDeniedComponent } from './components/acces-denied/acces-denied.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SallesComponent } from './components/salles/salles.component';
+import { RendezVousComponent } from './components/rendez-vous/rendez-vous.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SallesComponent } from './components/salles/salles.component';
     AccesDeniedComponent,
     NotFoundComponent,
     SallesComponent,
+    RendezVousComponent,
   ],
     imports: [
         SharedModule,

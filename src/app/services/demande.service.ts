@@ -13,27 +13,28 @@ export class DemandeService {
   constructor(private _httpClient : HttpClient) {
   }
   getDemandeById(id:number):Observable<Demande>{
-    console.log(id)
+    // console.log(id)
     return this._httpClient.get<Demande>(this.url+"/"+id);
   }
   modifyDemande(id:number,demande:Demande):Observable<Demande>{
-    console.log(id)
+    // console.log(id)
     return this._httpClient.put<Demande>(this.url+"/"+id,demande);
   }
   deleteDemande(id:number):Observable<String>{
-    console.log(id)
+    // console.log(id)
     return this._httpClient.delete<String>(this.url+"/"+id);
   }
   addDemande(demande:DemandeForm):Observable<DemandeForm>{
     // console.log(demande)
     return this._httpClient.post<DemandeForm>(this.url+"/add",demande);
   }
-  getAllDemande(id:number):Observable<Demande[]>{
-    console.log(id)
+  getAllDemande():Observable<Demande[]>{
+    // console.log(id)
     return this._httpClient.get<Demande[]>(this.url);
   }
   getSpecificDemandeForUser(id:number):Observable<Demande[]>{
-    console.log(id)
+    // console.log(id)
     return this._httpClient.get<Demande[]>(this.url+"/specificDemande/user/"+id);
   }
+
 }

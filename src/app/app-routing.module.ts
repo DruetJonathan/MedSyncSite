@@ -12,6 +12,7 @@ import {authMedecinGuard} from "./guard/auth-medecin.guard";
 import {authAdministratifGuard} from "./guard/auth-administratif.guard";
 import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {SallesComponent} from "./components/salles/salles.component";
+import {RendezVousComponent} from "./components/rendez-vous/rendez-vous.component";
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"demandes",component:DemandeComponent, canActivate:[authMedecinGuard]},
   {path:"salles",component:SallesComponent, canActivate:[authAdministratifGuard]},
   {path:"produits", component: ProduitsComponent, canActivate:[authAdministratifGuard]},
+  {path:"rendezvous", component: RendezVousComponent, canActivate:[authAdministratifGuard]},
   {path:"accesDenied", component: AccesDeniedComponent},
   {path:"**", component: NotFoundComponent}
 ];
