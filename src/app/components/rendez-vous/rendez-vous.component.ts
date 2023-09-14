@@ -111,7 +111,7 @@ export class RendezVousComponent implements OnInit{
     const second2 = "00";
 
     const formattedDate2 = `${year2}-${month2}-${day2} ${hour2}:${minute2}:${second2}`;
-
+    console.log(formattedDate2)
     this.entityForm.patchValue({
       dateDebut: new Date(formattedDate2),
     })
