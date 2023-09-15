@@ -1,7 +1,7 @@
  export const medecinLink = [
   { label: 'Profil', routerLink:['/panel'] ,icon: 'pi pi-fw pi-user' },
   { label: 'Demandes', routerLink:['/demandes'] ,icon: 'pi pi-fw pi-user' },
-  { label: 'Rendez-vous', routerLink:['/rendezvous'] ,icon: 'pi pi-fw pi-calendar' }
+  // { label: 'Rendez-vous', routerLink:['/rendezvous'] ,icon: 'pi pi-fw pi-calendar' }
 ];
 
  export const administratifLink =[

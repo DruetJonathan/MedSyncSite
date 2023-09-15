@@ -61,7 +61,7 @@ export class RendezVousComponent implements OnInit{
     this._rendezvousServ.getAllRendezvous().subscribe(
       (value:RendezVous[]) => {
         this.rendezvous = value
-        // console.log(value)
+        console.log(value)
       }
     )
   }
@@ -119,7 +119,10 @@ export class RendezVousComponent implements OnInit{
     console.log(this.entityForm.value)
 
     this._rendezvousServ.addRendezVous(this.entityForm.value).subscribe(
-      () => this.getDemandes()
+      () => {
+        this.getDemandes()
+        this.getRendezvous()
+      }
     );
   }
   idDemande : number = 0;
@@ -157,7 +160,7 @@ export class RendezVousComponent implements OnInit{
   roundUpToNextHour(date: Date): Date {
     const roundedDate = new Date(date);
     roundedDate.setMinutes(0, 0, 0);
-    roundedDate.setHours(roundedDate.getHours() + 1);
+    roundedDate.setHours(roundedDate.getHours());
     return roundedDate;
   }
 }

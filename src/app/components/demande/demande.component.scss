@@ -27,7 +27,18 @@ section {
   align-items: center;
   margin: 20px;
 }
-
+.status{
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 25px;
+}
+.Assigned{
+  background: green;
+  color: white;
+}
+.waiting{
+  background: orange;
+}
 /* Style de la carte (card) */
 .card {
   border: 1px solid #ccc;

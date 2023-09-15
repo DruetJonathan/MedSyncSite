@@ -7,7 +7,7 @@ export interface RendezVous {
   dateDebut: Date;
   dateFin: Date;
   demande: Demande;
-  creePar: User;
+  creePar: String;
   salle: Salle;
   }
 export interface RendezVousForm {

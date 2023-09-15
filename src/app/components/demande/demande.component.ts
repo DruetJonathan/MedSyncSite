@@ -12,6 +12,8 @@ import {ProduitDTO} from "../../Models/Produit";
 import {ProduitService} from "../../services/produit.service";
 import {Machine} from "../../Models/Machine";
 import {Router} from "@angular/router";
+import {RendezVous} from "../../Models/RendezVous";
+import {RendezvousService} from "../../services/rendezvous.service";
 @Component({
   selector: 'app-demande',
   templateUrl: './demande.component.html',
@@ -26,7 +28,9 @@ export class DemandeComponent implements OnInit{
   entityForm: FormGroup;
   produitsList!:ProduitDTO[];
   messages!: Message[];
-  constructor(private _router:Router,private _produitServ:ProduitService,private _authServ:AuthService, private _demandeServ:DemandeService,private fb: FormBuilder) {
+  rendezvous!: RendezVous[];
+
+  constructor(private _router:Router,private _produitServ:ProduitService,private _authServ:AuthService, private _demandeServ:DemandeService,private fb: FormBuilder,private _rendezvousServ:RendezvousService) {
     this.entityForm = this.fb.group({
       produitIds: [[], Validators.required],
       duree: ['', [Validators.required,Validators.min(0)]],
@@ -51,6 +55,7 @@ export class DemandeComponent implements OnInit{
       }
       this.activeItem = this.items[0];
       this.getDemandes();
+      this.getRendezvous()
       this.entityForm.get('demandeur')?.setValue(this.connectedUser?.id);
       console.log(auth)
     } );
@@ -91,7 +96,14 @@ export class DemandeComponent implements OnInit{
 
 
   }
-
+  getRendezvous() {
+    this._rendezvousServ.getSpecificRendezVous(this.connectedUser?.id!).subscribe(
+      (value:RendezVous[]) => {
+        this.rendezvous = value
+        // console.log(value)
+      }
+    )
+  }
   protected readonly Object = Object;
   protected readonly Machine = Machine;
 

@@ -17,13 +17,17 @@ export class RendezvousService {
   getAllRendezvous(): Observable<RendezVous[]> {
     return this._httpClient.get<RendezVous[]>(this.url);
   }
+  getSpecificRendezVous(id:number): Observable<RendezVous[]> {
+    return this._httpClient.get<RendezVous[]>(this.url+"/specificRendezVous/user/"+id);
+  }
 
   getSalleById(id: number): Observable<RendezVous> {
     return this._httpClient.get<RendezVous>(`${this.url}/${id}`);
   }
 
   addRendezVous(rendezVousForm: RendezVousForm): Observable<RendezVous> {
-    console.log(rendezVousForm)
+    console.log("service:"+rendezVousForm.dateDebut)
+    console.log("service:"+rendezVousForm.dateFin)
     return this._httpClient.post<RendezVous>(this.url+"/add", rendezVousForm);
   }
 

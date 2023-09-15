@@ -14,18 +14,25 @@
             <th>Rendez-vous</th>
             <th>Durée de la réservation</th>
             <th>Produits</th>
+            <th>Statut</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let demande of demandesUser">
             <td>{{ demande.id }}</td>
             <td>{{ demande.machine }}</td>
-            <td>{{ demande.rendezVous ? demande.rendezVous : 'Pas encore de rendez-vous' }}</td>
+            <td>{{ demande.rendezVous ? demande.rendezVous.dateDebut+"---"+demande.rendezVous.dateFin : 'Pas encore de rendez-vous' }}</td>
             <td>{{ demande.duree | hoursMinutes }}</td>
             <td>
               <ul>
                 <li *ngFor="let produit of demande.produits">{{ produit.libele }}</li>
               </ul>
+            </td>
+            <td *ngIf="demande.rendezVous">
+              <p class="status Assigned">Assginé</p>
+            </td>
+            <td *ngIf="!demande.rendezVous">
+              <p class="status waiting">En attente</p>
             </td>
           </tr>
           </tbody>
@@ -66,6 +73,34 @@
           <button type="submit" [disabled]="entityForm.invalid">Enregistrer</button>
         </form>
 
+      </p-tabPanel>
+      <p-tabPanel header="Voir les rendez-vous">
+        <table class="styled-table">
+          <thead>
+          <tr>
+            <th>Demande N°</th>
+            <th>Machine</th>
+            <th>Date de début</th>
+            <th>Date de fin</th>
+            <th>Assigné par</th>
+            <th>Salle</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let rendezVousSingle of rendezvous">
+            <td>{{ rendezVousSingle.demande.id }}</td>
+            <td>{{ rendezVousSingle.demande.machine }}</td>
+            <td>{{ rendezVousSingle.dateDebut | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ rendezVousSingle.dateFin | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ rendezVousSingle.creePar}}</td>
+            <td>Etage : {{ rendezVousSingle.salle.etage}} N°Salle : {{ rendezVousSingle.salle.numeroSalle}}</td>
+            <!--            <td>-->
+            <!--              <p-button label="Modifier" styleClass="p-button-warning"-->
+            <!--                        (click)="toggleModificationScreenForLoadingDiv(demande)"></p-button>-->
+            <!--            </td>-->
+          </tr>
+          </tbody>
+        </table>
       </p-tabPanel>
     </p-tabView>
   </div>

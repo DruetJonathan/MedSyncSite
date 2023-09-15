@@ -5,6 +5,32 @@
   <div class="card">
     <p-tabView>
       <p-tabPanel header="Voir les rendez-vous">
+        <table class="styled-table">
+          <thead>
+          <tr>
+            <th>Demande N°</th>
+            <th>Machine</th>
+            <th>Date de début</th>
+            <th>Date de fin</th>
+            <th>Assigné par</th>
+            <th>Salle</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let rendezVousSingle of rendezvous">
+            <td>{{ rendezVousSingle.demande.id }}</td>
+            <td>{{ rendezVousSingle.demande.machine }}</td>
+            <td>{{ rendezVousSingle.dateDebut | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ rendezVousSingle.dateFin | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ rendezVousSingle.creePar}}</td>
+            <td>Etage : {{ rendezVousSingle.salle.etage}} N°Salle : {{ rendezVousSingle.salle.numeroSalle}}</td>
+            <!--            <td>-->
+<!--              <p-button label="Modifier" styleClass="p-button-warning"-->
+<!--                        (click)="toggleModificationScreenForLoadingDiv(demande)"></p-button>-->
+<!--            </td>-->
+          </tr>
+          </tbody>
+        </table>
       </p-tabPanel>
       <p-tabPanel header="Assigner un rendez-vous">
 
@@ -44,9 +70,9 @@
     <div>
       <h2>Modification salle</h2>
 
-      <form [formGroup]="entityForm" (ngSubmit)="addRendezVous()">
+      <form [formGroup]="entityForm" (ngSubmit)="addRendezVous()" *ngIf="listSalleDispoForMachine | async as salles">
         <div class="form-group">
-          <select formControlName="salle" id="salle" *ngIf="listSalleDispoForMachine | async as salles">
+          <select formControlName="salle" id="salle" >
             <option *ngFor="let salle of salles" value="{{salle.id}}" (click)="setSalleSelected(salle.id)">Etage:{{ salle.etage }} N°
               salle:{{ salle.numeroSalle }}</option>
           </select>
@@ -60,6 +86,7 @@
 
         <button type="submit" [disabled]="entityForm.invalid">Enregistrer</button>
       </form>
+<!--      <p>Aucune salle disponible pour cette demande</p>-->
     </div>
   </div>
 </section>>
