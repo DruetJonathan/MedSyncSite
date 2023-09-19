@@ -122,6 +122,7 @@ export class RendezVousComponent implements OnInit{
       () => {
         this.getDemandes()
         this.getRendezvous()
+        this.toggleModificationScreen()
       }
     );
   }
@@ -130,8 +131,13 @@ export class RendezVousComponent implements OnInit{
     let dateDebut = this.entityForm.get('dateDebut')?.value;
     const dureeMinutes = this.demandeCurrent.duree;
     let dateFin = new Date(dateDebut);
-    dateFin.setMinutes(dateFin.getHours() + dureeMinutes);
+    console.log("date finnnnn av:"+dateFin)
+    console.log("date finnnnn av duree:"+dureeMinutes)
+
+    dateFin.setMinutes((dateFin.getMinutes() + dureeMinutes));
+    console.log("date finnnnn:"+dateFin)
     dateFin = this.roundUpToNextHour(dateFin);
+
     const year = dateFin.getFullYear();
     const month = (dateFin.getMonth() + 1).toString().padStart(2, '0');
     const day = dateFin.getDate().toString().padStart(2, '0');
@@ -157,10 +163,18 @@ export class RendezVousComponent implements OnInit{
 
 
 
-  roundUpToNextHour(date: Date): Date {
-    const roundedDate = new Date(date);
-    roundedDate.setMinutes(0, 0, 0);
-    roundedDate.setHours(roundedDate.getHours());
+  roundUpToNextHour(roundedDate: Date): Date {
+    // const roundedDate = new Date(date);
+    console.log("minutes: "+roundedDate.getMinutes())
+    console.log("minutes: "+roundedDate)
+    if (roundedDate.getMinutes() > 0){
+      roundedDate.setMinutes(0, 0, 0);
+      roundedDate.setHours(roundedDate.getHours()+1);
+      console.log("test rounded: "+roundedDate)
+    }else{
+      roundedDate.setHours(roundedDate.getHours());
+    }
+    roundedDate.setMilliseconds(0);
     return roundedDate;
   }
 }
